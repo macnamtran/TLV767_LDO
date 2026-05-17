@@ -1,7 +1,6 @@
 # TLV767 Adjustable LDO Board
 
 ## 1. Project Overview
-## Project Preview
 
 ### Schematic
 
@@ -13,7 +12,7 @@
 
 ### 3D View
 
-![TLV767 3D view](images/3d.png)
+![TLV767 3D view](images/3D.png)
 
 This project is a KiCad PCB design for an adjustable low-dropout linear regulator board using the **TLV76701DRVx**.
 
