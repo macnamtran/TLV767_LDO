@@ -1,0 +1,12 @@
+# KiCad backup/autosave/lock files
+*-backups/
+#auto_saved_files#
+*.bak
+*.lck
+~*.lck
+_autosave-*
+fp-info-cache
+
+# OS files
+.DS_Store
+Thumbs.db
