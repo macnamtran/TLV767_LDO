@@ -1,0 +1,13 @@
+** Drc report for TLV767_LDO.kicad_pcb **
+** Created on 2026-09-14T15:23:08-0400 **
+
+** Found 1 DRC violations **
+[lib_footprint_mismatch]: Footprint 'WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm_ThermalVias' does not match copy in library 'Package_SON'.
+    Local override; warning
+    @(161.5440 mm, 95.0380 mm): Footprint U1
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **
