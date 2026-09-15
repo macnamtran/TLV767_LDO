@@ -1,0 +1,180 @@
+
+**** 09/14/26 20:57:12 **** PSpice 23.1.0 (30 January 2024) *** ID# 0 ********
+
+ ** Profile: "STARTUP-trans"  [ C:\Users\User\Downloads\slvmcy2\tlv76701_trans-pspicefiles\startup\trans.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "trans.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../tlv76701_trans.lib" 
+* From [PSPICE NETLIST] section of C:\cds_spb_home\cdssetup\OrCAD_PSpiceTIPSpice_Install\23.1.0\PSpice.ini file:
+.lib "nom_pspti.lib" 
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 3m 0 20n 
+.OPTIONS ADVCONV
+.OPTIONS FILEMODELSEARCH
+.OPTIONS TNOM= 25.0
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\STARTUP.net" 
+
+
+
+**** INCLUDING STARTUP.net ****
+* source TLV76701_TRANS
+C_C1         0 OUT  2.2u  TC=0,0 
+C_C2         0 VIN  1u  TC=0,0 
+R_RLOAD         OUT 0  33 TC=0,0 
+V_V1         VIN 0  
++PULSE 0 5 200u 1u 1u 4m 2
+R_R2         OUT FB  100k TC=0,0 
+R_R3         FB 0  32k TC=0,0 
+X_U1         VIN FB 0 VIN OUT TLV76701_TRANS
+C_C3         0 VIN  100n  TC=0,0 
+C_C4         0 OUT  100n  TC=0,0 
+C_C5         FB OUT  10p  TC=0,0 
+
+**** RESUMING trans.cir ****
+.END
+
+**** 09/14/26 20:57:12 **** PSpice 23.1.0 (30 January 2024) *** ID# 0 ********
+
+ ** Profile: "STARTUP-trans"  [ C:\Users\User\Downloads\slvmcy2\tlv76701_trans-pspicefiles\startup\trans.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   25.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   FB) 109.7E-06  (  OUT) 452.5E-06  (  VIN)    0.0000  (X_U1.OK)    0.0000    
+
+(X_U1.VXX)    0.0000                  (X_U1.VYY)-153.4E-30                      
+
+(X_U1.VZZ) 1.493E-15                  (X_U1.LOAD)-452.5E-15                     
+
+(X_U1.OK_A)    0.0000                 (X_U1.V1P8)    5.0000                     
+
+(X_U1.DISCH)    1.0000                (X_U1.EN_OK)    0.0000                    
+
+(X_U1.VOUT1) 452.5E-06                (X_U1.V_FBK) 109.7E-06                    
+
+(X_U1.V_INT)    0.0000                (X_U1.EN_INT)    0.0000                   
+
+(X_U1.U1_VDR)    0.0000               (X_U1.ILIM_EN)    0.0000                  
+
+(X_U1.N430233) 1.493E-15              (X_U1.N430701)    0.0000                  
+
+(X_U1.N431149) 1.493E-15              (X_U1.N431153)    0.0000                  
+
+(X_U1.N508136)    1.0000              (X_U1.N508184) 825.0E-06                  
+
+(X_U1.N508352)    0.0000              (X_U1.N508416)    0.0000                  
+
+(X_U1.N508434)    0.0000              (X_U1.N508440)    0.0000                  
+
+(X_U1.N508446)    1.0000              (X_U1.N516314)    0.0000                  
+
+(X_U1.N664880)    0.0000              (X_U1.N664884)    0.0000                  
+
+(X_U1.N666220)    5.0000              (X_U1.N710213)    0.0000                  
+
+(X_U1.N726704)-452.5E-15              (X_U1.U1_DROP)    0.0000                  
+
+(X_U1.VIN_INT)    0.0000              (X_U1.VIN_ORG)    0.0000                  
+
+(X_U1.VZZ_INT) 1.493E-15              (X_U1.N7023551)     .0720                 
+
+(X_U1.U1_EN_IH)     .9000             (X_U1.X_U2.MY5)    1.0000                 
+
+(X_U1.X_U2.Qbr)    1.0000             (X_U1.X_U2.Qqq) 2.002E-15                 
+
+(X_U1.U1_EN_HYS)     .4000            (X_U1.U1_N08002)    2.2000                
+
+(X_U1.U1_N08110) 11.73E-15            (X_U1.U1_N08364) 11.73E-15                
+
+(X_U1.U1_N08450)    0.0000            (X_U1.U1_N08482)    0.0000                
+
+(X_U1.U1_N08522)     .7150            (X_U1.U1_N08530) 2.862E-15                
+
+(X_U1.U1_N08828)    0.0000            (X_U1.U1_N08864)     .1300                
+
+(X_U1.U1_N08920)    0.0000            (X_U1.U1_VIN_OK)    0.0000                
+
+(X_U1.X_U2.Qint) 2.002E-15            (X_U1.I_FOLDBACK)     .2250               
+
+(X_U1.X_U1_U13.1)    0.0000           (X_U1.X_U1_U15.1)    0.0000               
+
+(X_U1.X_U2.MYVSS)    0.0000           (X_U1.X_U2.Qqqd1)    0.0000               
+
+(X_U1.X_U3.YINT1)    0.0000           (X_U1.X_U3.YINT2)    0.0000               
+
+(X_U1.X_U3.YINT3)    1.0000           (X_U1.U1_PRE_ENOK)    0.0000              
+
+(X_U1.X_U2.X3.YINT)    0.0000         (X_U1.X_U1_U13.INM1)     .9000            
+
+(X_U1.X_U1_U13.INP1)    0.0000        (X_U1.X_U1_U13.INP2)    0.0000            
+
+(X_U1.X_U1_U15.INM1)    2.2000        (X_U1.X_U1_U15.INP1)    0.0000            
+
+(X_U1.X_U1_U15.INP2)    0.0000        (X_U1.X_U1_U16.YINT)    0.0000            
+
+(X_U1.X_U1_U17.YINT)    0.0000        
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.500E-06
+    X_U1.V_V1   -4.887E-12
+    X_U1.V_V2   -1.214E-03
+    X_U1.V_U1_V5   0.000E+00
+    X_U1.V_U1_V3   0.000E+00
+    X_U1.V_U1_V7  -1.431E-12
+    X_U1.V_U1_V6   0.000E+00
+    X_U1.V_U1_V4   0.000E+00
+    X_U1.X_H2.VH_H2  -4.525E-13
+    X_U1.X_F1.VF_F1  -4.525E-13
+    X_U1.X_U2.V1  -1.001E-12
+    X_U1.X_U2.V2   2.781E-27
+
+    TOTAL POWER DISSIPATION   8.74E-05  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 09/14/26 20:57:12 **** PSpice 23.1.0 (30 January 2024) *** ID# 0 ********
+
+ ** Profile: "STARTUP-trans"  [ C:\Users\User\Downloads\slvmcy2\tlv76701_trans-pspicefiles\startup\trans.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =       10.42
+
