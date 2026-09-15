@@ -29,12 +29,21 @@ Both saved output logs report JOB CONCLUDED, with no simulation error or converg
 
 These are rounded cursor-based simulation readings, not newly computed global extrema or hardware measurements. The load returns near 3 ms (pulse fall starts at 3.001 ms). Recovery time was not quantified.
 
+## Screenshot evidence
+
+- [Startup overview](startup_33ohm/startup_5V_3V3_33ohm.png)
+- [Startup rise-time cursors](startup_33ohm/startup_rise_time_33ohm.png)
+- [Load-transient schematic](load_transient_10mA_100mA/load_transient_schematic.png)
+- [Load-transient overview](load_transient_10mA_100mA/load_transient_overview.png)
+- [Load application dip](load_transient_10mA_100mA/load_step_10to100mA_dip.png)
+- [Load removal overshoot](load_transient_10mA_100mA/load_step_100to10mA_overshoot.png)
+
 ## Opening and reproducing
 
-1. Extract the entire archive on a Windows computer with PSpice for TI, keeping each case folder intact.
+1. Download or clone this repository on a Windows computer with PSpice for TI, keeping each case folder intact.
 2. Open TLV76701_TRANS.opj inside the desired case folder and select STARTUP-trans.
 3. Check the saved settings against the table and run. Use V(VIN), V(OUT), I(RLOAD), and for the load-transient case I(RLOAD)+I(I1).
-4. Saved waveform data and plot settings are under TLV76701_TRANS-PSpiceFiles/STARTUP/trans/.
+4. Plot settings and run logs are under TLV76701_TRANS-PSpiceFiles/STARTUP/trans/. The load-transient case includes trans.dat. The approximately 37 MB startup trans.dat is omitted from GitHub and retained in the original backup archive; rerun the startup profile to regenerate it in this directory.
 
 The OPJ design, profile and local-model references are relative. The generated circuit references ../../../tlv76701_trans.lib. Standard nom_pspti.lib and nom.lib depend on the local PSpice installation. Historical absolute paths remain in GUI state and provenance comments; reopening on another computer has not been tested. Open PAGE1 through the project tree if a restored window points to the old location.
 
