@@ -4,9 +4,9 @@
 
 A KiCad power-supply board designed to convert a **5 V DC input to a nominal 3.3 V output** using the adjustable **TLV76701DRVx** linear regulator with fixed feedback resistors.
 
-The project covers datasheet-based component selection, feedback calculations, schematic capture, PCB layout, and electrical/design-rule checking.
+The project covers datasheet-based component selection, feedback calculations, schematic capture, PCB layout, electrical/design-rule checking, and PSpice startup/load-transient evaluation.
 
-**Status:** Schematic and PCB layout prepared; ERC and DRC reports are included. Simulation, fabrication, and bench testing are pending. Output current capability has not yet been established for this board.
+**Status:** Schematic and PCB layout prepared; ERC and DRC reports are included. Nominal startup and load-transient simulations are complete; fabrication and bench testing are pending. Output current capability has not yet been established for this board.
 
 This revision replaces the earlier potentiometer-adjustable design. Earlier files remain available in Git history.
 
@@ -77,7 +77,7 @@ Input power enters through J1; J2 provides the output. PWR_FLAG symbols identify
 | C5 | 10 pF | Feed-forward capacitor across R1 |
 | J1, J2 | Two-pin connectors | Input and output connections |
 
-C5 is included in this revision; its effect on transient behaviour has not yet been simulated or measured. Final capacitor part numbers, effective capacitance, and resistor tolerances remain to be documented.
+C5 is included in the simulated circuit; its individual effect has not been isolated with a with/without comparison. Final capacitor part numbers, effective capacitance, and resistor tolerances remain to be documented.
 
 ## 6. Design Calculations
 
@@ -133,7 +133,7 @@ Checks recorded on September 14, 2026:
 | Unconnected pads | 0 |
 | PCB–schematic parity | 0 issues in the parity-enabled DRC run |
 | Footprint warning review | Front-silkscreen-only differences |
-| Simulation | Pending |
+| Startup and load-transient simulation | Completed; see results below |
 | Fabrication / bench testing | Pending |
 
 Reports: [ERC](docs/ERC-report.rpt) · [DRC](docs/DRC-report.rpt)
@@ -147,7 +147,27 @@ The ignored DRC categories were:
 - NPTH inside courtyard.
 - Footprint component type does not match footprint pads.
 
-The four ignored ERC categories still need to be recorded and reviewed. No manufacturer DFM approval, electrical performance, or thermal validation is claimed.
+The four ignored ERC categories still need to be recorded and reviewed. No manufacturer DFM approval, bench-verified electrical performance, or thermal validation is claimed.
+
+### PSpice simulation results
+
+Nominal tests use a 5 V input and TI's TLV76701 transient model. Saved profiles and run logs were reviewed on September 15, 2026; both logs report completion without simulation errors.
+
+| Test | Conditions | Approximate result |
+|---|---|---|
+| Startup | 33 Ω load (~100 mA), 3 ms run, 20 ns maximum timestep | 0.42 ms rise time between manually selected points near 10% and 90% of nominal output |
+| Load application | ~10 to 100 mA, 1 µs edge | 10.6 mV output dip relative to pre-step voltage |
+| Load removal | ~100 to 10 mA, 1 µs edge | 11.0 mV overshoot relative to pre-step voltage |
+
+The load-transient test runs for 5 ms with a 100 ns maximum timestep. These are rounded cursor readings from schematic-level simulations, not PCB measurements. The startup rise time excludes startup delay. Ideal external capacitors do not include ESR, DC-bias derating or PCB parasitics.
+
+[Simulation settings, reproduction instructions and limitations](simulation/README.md)
+
+- [Startup waveform](simulation/startup_33ohm/startup_5V_3V3_33ohm.png)
+- [Startup rise-time cursors](simulation/startup_33ohm/startup_rise_time_33ohm.png)
+- [Load-transient overview](simulation/load_transient_10mA_100mA/load_transient_overview.png)
+- [Output dip](simulation/load_transient_10mA_100mA/load_step_10to100mA_dip.png)
+- [Output overshoot](simulation/load_transient_10mA_100mA/load_step_100to10mA_overshoot.png)
 
 ## 9. Repository Contents
 
@@ -158,13 +178,14 @@ The four ignored ERC categories still need to be recorded and reviewed. No manuf
 | [TLV767_LDO.kicad_pcb](TLV767_LDO.kicad_pcb) | Editable PCB layout |
 | [images/](images/) | Schematic, layout, and 3D views |
 | [docs/](docs/) | ERC and DRC reports |
+| [simulation/](simulation/) | PSpice projects, profiles, netlists, logs and result screenshots |
 
 ## 10. Next Steps
 
 1. Define the intended load and continuous-current target.
 2. Complete component-tolerance, thermal, and manufacturing review.
 3. Review ignored rule checks and document their settings.
-4. Simulate startup and load/input transients using TI's TLV76701 model.
+4. Extend simulation to input transients and component variations.
 5. Fabricate and perform bench tests when equipment and budget allow.
 
 ## References
